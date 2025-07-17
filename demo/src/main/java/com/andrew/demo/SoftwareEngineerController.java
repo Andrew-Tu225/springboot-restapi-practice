@@ -18,9 +18,19 @@ public class SoftwareEngineerController {
         this.softwareEngineerService = softwareEngineerService;
     }
 
-    @PostMapping
-    public void addSoftwareEngineer(@RequestBody SoftwareEngineer softwareEngineer){
-        softwareEngineerService.insertSoftwareEngineer(softwareEngineer);
+    @PostMapping("/add")
+    public ResponseEntity<?> addSoftwareEngineer(@RequestBody SoftwareEngineerDTO softwareEngineerDTO){
+        try{
+            if(softwareEngineerDTO.getName() != null && softwareEngineerDTO.getTechStack() != null){
+                softwareEngineerService.insertSoftwareEngineer(softwareEngineerDTO);
+                return ResponseEntity.status(HttpStatus.CREATED).body("new software engineer is added sucessfully");
+            }
+            else{
+                return ResponseEntity.badRequest().body("name and techstack field can't be empty");
+            }
+        } catch(Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 
     @GetMapping("/get/{id}")

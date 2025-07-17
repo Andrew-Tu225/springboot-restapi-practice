@@ -25,8 +25,11 @@ public class SoftwareEngineerService {
                 .orElseThrow(()-> new IllegalStateException("id not found"));
     }
 
-    public void insertSoftwareEngineer(SoftwareEngineer softwareEngineer) {
-        softwareEngineerRepo.save(softwareEngineer);
+    public void insertSoftwareEngineer(SoftwareEngineerDTO softwareEngineerDTO) {
+        SoftwareEngineer newSoftwareEngineer = new SoftwareEngineer();
+        newSoftwareEngineer.setName(softwareEngineerDTO.getName());
+        newSoftwareEngineer.setTechStack(softwareEngineerDTO.getTechStack());
+        softwareEngineerRepo.save(newSoftwareEngineer);
     }
 
     public void updateSoftwareEngineer(Integer id, SoftwareEngineer updatedSoftwareEngineer){
