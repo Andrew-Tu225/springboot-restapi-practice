@@ -39,7 +39,7 @@ public class SoftwareEngineerController {
     }
 
     @GetMapping("/get-all")
-    public List<SoftwareEngineer> getEngineers()
+    public List<SoftwareEngineerDTO> getSoftwareEngineers()
     {
         return softwareEngineerService.getSoftwareEngineer();
     }
