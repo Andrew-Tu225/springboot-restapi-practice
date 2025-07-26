@@ -45,9 +45,9 @@ public class SoftwareEngineerController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateSoftwareEngineer(@PathVariable Integer id, @RequestBody SoftwareEngineer updatedSoftwareEngineer){
+    public ResponseEntity<?> updateSoftwareEngineer(@PathVariable Integer id, @RequestBody SoftwareEngineerDTO softwareEngineerDTO){
         try{
-            softwareEngineerService.updateSoftwareEngineer(id, updatedSoftwareEngineer);
+            softwareEngineerService.updateSoftwareEngineer(id, softwareEngineerDTO);
             return ResponseEntity.ok("software engineer is updated sucessfully");
         }
         catch(Exception e){

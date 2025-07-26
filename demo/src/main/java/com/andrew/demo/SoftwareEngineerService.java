@@ -43,20 +43,20 @@ public class SoftwareEngineerService {
         softwareEngineerRepo.save(newSoftwareEngineer);
     }
 
-    public void updateSoftwareEngineer(Integer id, SoftwareEngineer updatedSoftwareEngineer){
+    public void updateSoftwareEngineer(Integer id, SoftwareEngineerDTO softwareEngineerDTO){
         SoftwareEngineer softwareEngineer = getSoftwareEngineerById(id);
-        if (Objects.nonNull(updatedSoftwareEngineer.getName())
+        if (Objects.nonNull(softwareEngineerDTO.getName())
                 && !"".equalsIgnoreCase(
-                updatedSoftwareEngineer.getName())) {
+                softwareEngineerDTO.getName())) {
             softwareEngineer.setName(
-                    updatedSoftwareEngineer.getName());
+                    softwareEngineerDTO.getName());
         }
 
-        if (Objects.nonNull(updatedSoftwareEngineer.getTechStack())
+        if (Objects.nonNull(softwareEngineerDTO.getTechStack())
                 && !"".equalsIgnoreCase(
-                updatedSoftwareEngineer.getTechStack())) {
+                softwareEngineerDTO.getTechStack())) {
             softwareEngineer.setTechStack(
-                    updatedSoftwareEngineer.getTechStack());
+                    softwareEngineerDTO.getTechStack());
         }
 
         softwareEngineerRepo.save(softwareEngineer);
